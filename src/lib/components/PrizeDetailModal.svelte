@@ -98,26 +98,23 @@
 {/if}
 
 <style>
+  /* SP: bottom-sheet 化 */
   .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--overlay, rgba(0, 0, 0, 0.5));
+    inset: 0;
+    background: var(--color-overlay);
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     z-index: 1000;
-    padding: 1rem;
   }
 
   .modal-content {
-    background: var(--bg-white, #ffffff);
-    border-radius: 12px;
-    max-width: 500px;
+    background: var(--color-surface-white);
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    max-width: 100%;
     width: 100%;
-    max-height: 90vh;
+    max-height: 100vh;
     overflow-y: auto;
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -125,38 +122,41 @@
 
   .close-button {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: var(--space-12);
+    right: var(--space-12);
     background: transparent;
     border: none;
-    font-size: 2rem;
+    font-size: var(--font-size-2xl);
     line-height: 1;
     cursor: pointer;
-    color: var(--text-middle, #8d9099);
+    color: var(--color-text-sub);
     padding: 0;
-    width: 2rem;
-    height: 2rem;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s ease;
+    border-radius: var(--radius-full);
+    transition: color 0.2s ease, background-color 0.2s ease;
   }
 
   .close-button:hover {
-    color: var(--text-high, #15151a);
+    color: var(--color-text-main);
+    background-color: var(--color-state-highlight);
   }
 
   .prize-detail {
-    padding: 2rem;
+    padding: var(--space-20);
   }
 
+  /* SP: 縦長すぎないよう 4/3 にする */
   .prize-image-container {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--bg-low, #f5f5f5);
-    margin-bottom: 1.5rem;
+    background: var(--color-surface-base);
+    margin-bottom: var(--space-16);
   }
 
   .prize-image {
@@ -168,84 +168,122 @@
   .prize-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
+    gap: var(--space-12);
+    margin-bottom: var(--space-16);
   }
 
   .rarity-icon {
-    font-size: 2rem;
+    font-size: var(--font-size-2xl);
     line-height: 1;
   }
 
   .prize-name {
-    font-size: 1.5rem;
+    font-size: var(--font-size-xl);
     font-weight: 700;
-    color: var(--text-high, #15151a);
+    color: var(--color-text-main);
     margin: 0;
   }
 
   .prize-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: var(--space-12);
+    margin-bottom: var(--space-16);
   }
 
   .stat-item {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    padding: 1rem;
-    background: var(--bg-low, #f5f5f5);
-    border-radius: 8px;
+    gap: var(--space-4);
+    padding: var(--space-12);
+    background: var(--color-surface-base);
+    border-radius: var(--radius-lg);
   }
 
   .stat-label {
-    font-size: 0.875rem;
-    color: var(--text-middle, #8d9099);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-sub);
   }
 
   .stat-value {
-    font-size: 1.25rem;
+    font-size: var(--font-size-base);
     font-weight: 600;
-    color: var(--text-high, #15151a);
+    color: var(--color-text-main);
   }
 
   .prize-description {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-16);
   }
 
   .description-label {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     font-weight: 600;
-    color: var(--text-high, #15151a);
-    margin: 0 0 0.5rem 0;
+    color: var(--color-text-main);
+    margin: 0 0 var(--space-8) 0;
   }
 
   .description-text {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--text-middle, #8d9099);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-sub);
     margin: 0;
   }
 
   .low-stock-notice {
-    padding: 0.75rem 1rem;
-    background: var(--accent-yellow, #ffb205);
-    color: var(--text-high, #15151a);
-    border-radius: 6px;
+    padding: var(--space-12) var(--space-16);
+    background: var(--color-state-warning);
+    color: var(--color-text-main);
+    border-radius: var(--radius-md);
     font-weight: 600;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: var(--space-12);
   }
 
   .out-of-stock-notice {
-    padding: 0.75rem 1rem;
-    background: var(--bg-middle, #e1e1e5);
-    color: var(--text-middle, #8d9099);
-    border-radius: 6px;
+    padding: var(--space-12) var(--space-16);
+    background: var(--color-surface-middle);
+    color: var(--color-text-sub);
+    border-radius: var(--radius-md);
     font-weight: 600;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: var(--space-12);
+  }
+
+  /* ============ Tablet (600px+): centered modal ============ */
+  @media (min-width: 600px) {
+    .modal-overlay {
+      align-items: center;
+      padding: var(--space-16);
+    }
+
+    .modal-content {
+      max-width: 560px;
+      max-height: 90vh;
+      border-radius: var(--radius-2xl);
+    }
+
+    .prize-detail {
+      padding: var(--space-24);
+    }
+
+    .prize-image-container {
+      aspect-ratio: 1 / 1;
+    }
+
+    .prize-name {
+      font-size: var(--font-size-2xl);
+    }
+
+    .stat-label {
+      font-size: var(--font-size-sm);
+    }
+
+    .stat-value {
+      font-size: var(--font-size-lg);
+    }
+
+    .description-text {
+      font-size: var(--font-size-base);
+    }
   }
 </style>

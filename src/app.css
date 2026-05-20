@@ -2,94 +2,122 @@
   /* =========================
       Primitive / Chromatic
    ========================== */
-  --color-red: #d70c18;
-  --color-orange: #ff7831;
-  --color-light-orange: #ff7250;
-  --color-yellow: #ffb205;
-  --color-light-yellow: #fbd951;
-  --color-gold: #d9b34c;
-  --color-green: #00b200;
-  --color-warm-gray: #f4f2f0;
+  --color-red: #D70C18;
+  --color-orange: #FF8336;
+  --color-yellow: #FFB205;
+  --color-gold: #DAB553;
+  --color-green: #00B200;
+  --color-warm-gray: #F4F2F0;
 
   /* =========================
-      Primitive / Gray
+      Primitive / Gray (11段階)
    ========================== */
-  --color-gray-0: #ffffff;
-  --color-gray-2: #f9f9f9;
-  --color-gray-4: #f5f5f5;
-  --color-gray-5: #f0f0f2;
-  --color-gray-10: #e1e1e5;
-  --color-gray-20: #c4c4cc;
-  --color-gray-30: #a8a9b2;
-  --color-gray-40: #8d9099;
-  --color-gray-50: #737480;
-  --color-gray-60: #5a5b66;
-  --color-gray-70: #42434d;
-  --color-gray-80: #2b2b33;
-  --color-gray-90: #15151a;
-
-  /* =========================
-      Semantic / Text & Icon
-   ========================== */
-  --color-text-high: var(--color-gray-90);
-  --color-text-middle: var(--color-gray-40);
-  --color-text-low: var(--color-gray-20);
-  --color-text-white: var(--color-gray-0);
-  --color-text-placeholder: var(--color-gray-30);
-  --color-text-disabled: var(--color-gray-20);
-
-  /* =========================
-      Semantic / Border
-   ========================== */
-  --color-border-back-btn: var(--color-gray-40);
-  --color-border-middle: var(--color-gray-30);
-  --color-border-low: var(--color-gray-10);
-  --color-border-white: var(--color-gray-0);
-  --color-border-disabled: var(--color-gray-20);
-
-  /* =========================
-      Semantic / Background
-   ========================== */
-  --color-bg-contents-area: var(--color-gray-4);
-  --color-bg-white: var(--color-gray-0);
-  --color-bg-high: var(--color-gray-20);
-  --color-bg-middle: var(--color-gray-10);
-  --color-bg-low: var(--color-gray-4);
-  --color-bg-disabled: var(--color-gray-20);
-  --color-bg-dark-tag: var(--color-gray-70);
-  --color-bg-senior-card: var(--color-warm-gray);
-  --color-bg-registration: var(--color-gray-2);
-  --color-bg-registration-pagination: color-mix(in srgb, var(--color-gray-4) 50%, transparent);
-
-  /* =========================
-      Semantic / Tool
-   ========================== */
-  --color-tool-scrollbar-bar: var(--color-gray-20);
-  --color-tool-scrollbar-area: var(--color-gray-4);
-  --color-tool-progress-bar: var(--color-gray-10);
-
-  /* =========================
-      Semantic / Option
-   ========================== */
-  --color-option-overlay: color-mix(in srgb, #000000 50%, transparent);
-  --color-option-learning-selected: color-mix(in srgb, var(--color-red) 10%, transparent);
-  --color-option-highlight: var(--color-gray-5);
-
-  /* =========================
-      Semantic / Accent
-   ========================== */
-  --color-accent-red: var(--color-red);
-  --color-accent-orange: var(--color-orange);
-  --color-accent-yellow: var(--color-yellow);
-  --color-accent-gold: var(--color-gold);
-  --color-accent-light-orange: var(--color-light-orange);
-  --color-accent-green-light: var(--color-green);
-  --color-accent-ranking-frame: var(--color-light-yellow);
+  --color-gray-0: #FFFFFF;
+  --color-gray-4: #F5F5F5;
+  --color-gray-10: #E1E1E5;
+  --color-gray-20: #C6C6CC;
+  --color-gray-30: #ACACB2;
+  --color-gray-40: #939399;
+  --color-gray-50: #797980;
+  --color-gray-60: #626266;
+  --color-gray-70: #4A4A4D;
+  --color-gray-80: #323234;
+  --color-gray-90: #1A1A1A;
 
   /* =========================
       Semantic / Brand
    ========================== */
-  --color-brand-assign-red: var(--color-red);
+  --color-brand-red: var(--color-red);
   --color-brand-white: var(--color-gray-0);
 
+  /* =========================
+      Semantic / Text & Icon
+   ========================== */
+  --color-text-main: var(--color-gray-90);
+  --color-text-sub: var(--color-gray-40);
+  --color-text-white: var(--color-gray-0);
+
+  /* =========================
+      Semantic / Border
+   ========================== */
+  --color-border-base: var(--color-gray-10);
+  --color-border-middle: var(--color-gray-30);
+  --color-border-white: var(--color-gray-0);
+
+  /* =========================
+      Semantic / Surface (Background)
+   ========================== */
+  --color-surface-base: var(--color-gray-4);
+  --color-surface-middle: var(--color-gray-10);
+  --color-surface-high: var(--color-gray-20);
+  --color-surface-warm: var(--color-warm-gray);
+  --color-surface-dark-tag: var(--color-gray-70);
+  --color-surface-white: var(--color-gray-0);
+
+  /* =========================
+      Semantic / Accent
+   ========================== */
+  --color-accent-orange: var(--color-orange);
+  --color-accent-gold: var(--color-gold);
+
+  /* =========================
+      Semantic / State
+   ========================== */
+  --color-state-error: var(--color-red);
+  --color-state-warning: var(--color-yellow);
+  --color-state-success: var(--color-green);
+  --color-state-disabled: var(--color-gray-20);
+  --color-state-highlight: var(--color-gray-4);
+  --color-overlay: color-mix(in srgb, #000000 50%, transparent);
+
+  /* =========================
+      Spacing (14段階)
+   ========================== */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+
+  /* =========================
+      Radius (8段階)
+   ========================== */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 999px;
+
+  /* =========================
+      Typography (Font Size 8段階)
+   ========================== */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 32px;
+
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.7;
+}
+
+html {
+  font-size: 16px;
+  overscroll-behavior: none;
 }

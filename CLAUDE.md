@@ -71,109 +71,163 @@ Managed by `/kiro:steering` command. Updates here reflect command changes.
 - **Conditional**: Loaded for specific file patterns (e.g., "*.test.js")
 - **Manual**: Reference with `@filename.md` syntax
 
-## Design GuidLine
+## Design Guideline
+
+ASSIGN デザインシステムに準拠したトークン定義。CSS カスタムプロパティとして `src/app.css` に一元管理。SP ファースト設計を採用し、Tablet/Desktop は `min-width` メディアクエリでスケールアップする。
 
 ---
 
-### カラートークン
+### レスポンシブ方針 (SP ファースト)
 
-デザインシステムで使用するカラートークンの一覧です。CSSカスタムプロパティとして定義されています。
+ベースは SP (375-414px) を想定して書き、Tablet / Desktop へ `min-width` で段階的にスケールアップする。
 
-#### Primitive
+| ブレークポイント | 範囲 | 用途 |
+|---|---|---|
+| SP (base) | 0 - 599px | ベース。メディアクエリなし。 |
+| Tablet | 600 - 1023px | `@media (min-width: 600px)` |
+| Desktop | 1024px+ | `@media (min-width: 1024px)` |
 
-Primitiveカラーは、デザインシステムの基礎となる色の定義です。これらの色は直接使用せず、Semanticカラーを通じて使用します。
+旧式の `@media (max-width: ...)` でのスケールダウン記述は使わない。
 
-#### Chromatic
+タッチターゲット最小サイズ: **44px** (主要 CTA は 48-56px)。input/textarea も `min-height: 44px`、`font-size: var(--font-size-base)` (16px) で iOS の自動ズームを防止。
 
-彩度のある色の基本パレットです。ブランドカラーやアクセントカラーの基礎となります。
+モーダル: SP では bottom-sheet (画面下から立ち上げ・上部のみ角丸) とし、Tablet+ で centered 表示に切り替える。
 
-#### Gray
+---
 
-グレースケールの基本パレットです。0（白）から90（ほぼ黒）まで、10段階で定義されています。
+### Color トークン
 
-#### Semantic
-
-Semanticカラーは、用途に応じて名前付けされたカラートークンです。これらを使用することで、一貫性のあるデザインを実現できます。
-
-### Text & Icon
-
-テキストとアイコンに使用するカラートークンです。視認性と情報の優先度に応じて使い分けます。
+#### Primitive / Chromatic
 
 | トークン名 | 色コード | 用途 |
 |-----------|---------|------|
-| \`text-high\` | \`#15151a\` | デフォルトのテキスト（本文、見出し等） |
-| \`text-middle\` | \`#8d9099\` | 優先度の低いテキスト・アイコン |
-| \`text-low\` | \`#c4c4cc\` | 読む必要のないテキスト（フッターの著作権表示） |
-| \`text-placeholder\` | \`#a8a9b2\` | プレースホルダー |
-| \`text-disabled\` | \`#c4c4cc\` | ボタン非活性時のテキスト |
-| \`text-white\` | \`#ffffff\` | 白抜きテキスト（塗りつぶしボタンのテキスト） |
+| `--color-red` | `#D70C18` | ASSIGN ブランドレッド |
+| `--color-orange` | `#FF8336` | アクセント・強調 |
+| `--color-yellow` | `#FFB205` | 警告・在庫少 |
+| `--color-gold` | `#DAB553` | プレミアムタグ |
+| `--color-green` | `#00B200` | 成功状態 |
+| `--color-warm-gray` | `#F4F2F0` | 暖色系背景 |
 
-### Border
+#### Primitive / Gray (11段階)
 
-枠線に使用するカラートークンです。
+| トークン名 | 色コード |
+|-----------|---------|
+| `--color-gray-0` | `#FFFFFF` |
+| `--color-gray-4` | `#F5F5F5` |
+| `--color-gray-10` | `#E1E1E5` |
+| `--color-gray-20` | `#C6C6CC` |
+| `--color-gray-30` | `#ACACB2` |
+| `--color-gray-40` | `#939399` |
+| `--color-gray-50` | `#797980` |
+| `--color-gray-60` | `#626266` |
+| `--color-gray-70` | `#4A4A4D` |
+| `--color-gray-80` | `#323234` |
+| `--color-gray-90` | `#1A1A1A` |
 
-| トークン名 | 色コード | 用途 |
-|-----------|---------|------|
-| \`border-low\` | \`#e1e1e5\` | コンポーネントの基本的な枠線 |
-| \`border-middle\` | \`#a8a9b2\` | シナリオ相性・給与のセパレート線、診断結果チャート図の線等 |
-| \`border-back-btn\` | \`#8d9099\` | 戻るボタンの枠線 |
-| \`border-disabled\` | \`#c4c4cc\` | ボタン非活性時の枠線 |
-| \`border-white\` | \`#ffffff\` | 白枠 |
+#### Semantic / Text & Icon
 
-### Background
+| トークン名 | 値 | 用途 |
+|-----------|---|------|
+| `--color-text-main` | `#1A1A1A` | 本文・見出しなど標準テキスト |
+| `--color-text-sub` | `#939399` | 補助テキスト・プレースホルダー |
+| `--color-text-white` | `#FFFFFF` | 塗りつぶしボタンの白抜きテキスト |
 
-背景色に使用するカラートークンです。
+#### Semantic / Border
 
-| トークン名 | 色コード | 用途 |
-|-----------|---------|------|
-| \`bg-contents-area\` | \`#f5f5f5\` | コンテンツエリアの最下層背景 |
-| \`bg-white\` | \`#ffffff\` | 基本のコンテンツ背景（ヘッダー等） |
-| \`bg-high\` | \`#c4c4cc\` | 白テキスト用のグレー背景（「興味なし」ボタン等） |
-| \`bg-middle\` | \`#e1e1e5\` | 見出しテキストの背景 |
-| \`bg-low\` | \`#f5f5f5\` | 入力フォーム、モーダルの背景等 |
-| \`bg-disabled\` | \`#c4c4cc\` | ボタン非活性時の背景 |
-| \`bg-dark-tag\` | \`#42434d\` | 黒系のタグ（記事のカテゴリ等） |
-| \`bg-senior-card\` | \`#f4f2f0\` | シナリオカード、おすすめエージェントカードの背景等 |
-| \`bg-registration\` | \`#f9f9f9\` | 戻る・進むボタンの背景 |
-| \`bg-registration-pagination\` | \`#f5f5f5\` (50%透明) | 登録動線のコンテンツ背景 |
+| トークン名 | 値 | 用途 |
+|-----------|---|------|
+| `--color-border-base` | `#E1E1E5` | 基本の枠線 (カード、フォーム) |
+| `--color-border-middle` | `#ACACB2` | セパレーター線等 |
+| `--color-border-white` | `#FFFFFF` | 白枠 |
 
-### Tool
+#### Semantic / Surface (Background)
 
-スクロールバーやプログレスバーなど、UI要素に使用するカラートークンです。
+| トークン名 | 値 | 用途 |
+|-----------|---|------|
+| `--color-surface-base` | `#F5F5F5` | コンテンツエリア最下層・フォーム背景 |
+| `--color-surface-middle` | `#E1E1E5` | やや沈ませる背景 |
+| `--color-surface-high` | `#C6C6CC` | 強めグレー背景 |
+| `--color-surface-warm` | `#F4F2F0` | 暖色系カード背景 |
+| `--color-surface-dark-tag` | `#4A4A4D` | 黒系タグ |
+| `--color-surface-white` | `#FFFFFF` | カード・モーダル本体 |
 
-| トークン名 | 色コード | 用途 |
-|-----------|---------|------|
-| \`scrollbar-bar\` | \`#c4c4cc\` | スクロールバー本体 |
-| \`scrollbar-area\` | \`#f5f5f5\` | スクロールバートラック領域 |
-| \`progress-bar\` | \`#e1e1e5\` | プログレスバー |
+#### Semantic / Brand
 
-### Option
+| トークン名 | 値 | 用途 |
+|-----------|---|------|
+| `--color-brand-red` | `#D70C18` | ASSIGN ブランドカラー (主要 CTA) |
+| `--color-brand-white` | `#FFFFFF` | ブランドロゴ白抜き |
 
-オーバーレイやハイライトなど、特殊な用途に使用するカラートークンです。
+#### Semantic / Accent
 
-| トークン名 | 色コード | 用途 |
-|-----------|---------|------|
-| \`overlay\` | \`#000000\` (50%透明) | モーダルのオーバーレイ |
-| \`learning-selected\` | \`#d70c18\` (10%透明) | ラーニング動画（選択状態） |
-| \`highlight\` | \`#f0f0f2\` | ホバー時のハイライト |
+| トークン名 | 値 | 用途 |
+|-----------|---|------|
+| `--color-accent-orange` | `#FF8336` | 強調アクセント |
+| `--color-accent-gold` | `#DAB553` | プレミアム強調 |
 
-### Accent
+#### Semantic / State
 
-| トークン名 | 色コード | 用途 |
-|-----------|---------|------|
-| \`accent-red\` | \`#d70c18\` | バリデーションテキスト、パスワード強度表示等 |
-| \`accent-orange\` | \`#ff7831\` | オレンジアクセント |
-| \`accent-yellow\` | \`#ffb205\` | パスワード強度表示：普通 |
-| \`accent-gold\` | \`#d9b34c\` | プレミアムスカウトタグ |
-| \`accent-light-orange\` | \`#ff7250\` | 診断レポート4象限の左下 |
-| \`accent-green-light\` | \`#00b200\` | パスワード強度表示：強い・非常に強い |
-| \`accent-ranking-frame\` | \`#fbd951\` | シナリオランキングの月桂冠 |
+| トークン名 | 値 | 用途 |
+|-----------|---|------|
+| `--color-state-error` | `#D70C18` | エラー表示・バリデーション |
+| `--color-state-warning` | `#FFB205` | 警告・在庫少 |
+| `--color-state-success` | `#00B200` | 成功状態 |
+| `--color-state-disabled` | `#C6C6CC` | 非活性ボタン |
+| `--color-state-highlight` | `#F5F5F5` | ホバーハイライト |
+| `--color-overlay` | `rgba(0,0,0,0.5)` | モーダルオーバーレイ |
 
-### Brand
+---
 
-ブランドカラーとして使用するカラートークンです。
+### Spacing トークン (14段階)
 
-| トークン名 | 色コード | 用途 |
-|-----------|---------|------|
-| \`brand-assign-red\` | \`#d70c18\` | ブランドロゴ |
-| \`brand-white\` | \`#ffffff\` | ブランドロゴ白抜き |
+Auto Layout の gap/padding に使用。SP の余白は `--space-12` 〜 `--space-16` を基本に、Tablet+ で `--space-20` 〜 `--space-32` に拡張するのが目安。
+
+| トークン名 | 値 | 用途の目安 |
+|-----------|---|----------|
+| `--space-0` | 0 | 隙間なし明示 |
+| `--space-1` | 1px | 微細調整 (行間等) |
+| `--space-2` | 2px | 微細調整 |
+| `--space-4` | 4px | Tag 内 padding、極小余白 |
+| `--space-6` | 6px | 密な余白 |
+| `--space-8` | 8px | アイコン+テキスト、ボタン内余白 |
+| `--space-10` | 10px | リスト内余白 |
+| `--space-12` | 12px | ボタン内 padding、SP の関連要素間 |
+| `--space-16` | 16px | SP のセクション内ブロック間 (推奨) |
+| `--space-20` | 20px | カード padding (中) |
+| `--space-24` | 24px | セクション間の標準 |
+| `--space-32` | 32px | Tablet+ の大セクション切替 |
+| `--space-40` | 40px | ページ最外周 (大) |
+| `--space-48` | 48px | ヒーロー上下余白等 |
+
+---
+
+### Radius トークン (8段階)
+
+| トークン名 | 値 | 用途 |
+|-----------|---|------|
+| `--radius-xs` | 2px | プログレスバー、ゲージ |
+| `--radius-sm` | 4px | 小さなチップ・タグ |
+| `--radius-md` | 6px | 標準ボタン、フォーム input |
+| `--radius-lg` | 8px | カード (標準) |
+| `--radius-xl` | 12px | 大きめのカード・主要 CTA |
+| `--radius-2xl` | 16px | モーダル本体、大セクション |
+| `--radius-3xl` | 24px | 将来用 |
+| `--radius-full` | 999px | ピル型ボタン、アバター、トグル |
+
+---
+
+### Typography トークン
+
+| トークン名 | 値 | 用途 |
+|-----------|---|------|
+| `--font-size-xs` | 12px | キャプション、補助情報 |
+| `--font-size-sm` | 14px | 補助テキスト、SP の本文 |
+| `--font-size-base` | 16px | 本文 (基準値、iOS zoom 防止) |
+| `--font-size-lg` | 18px | 強調・サブ見出し |
+| `--font-size-xl` | 20px | 小見出し |
+| `--font-size-2xl` | 24px | SP のヒーロー見出し |
+| `--font-size-3xl` | 28px | Tablet+ のヒーロー見出し |
+| `--font-size-4xl` | 32px | Desktop のヒーロー見出し |
+| `--line-height-tight` | 1.25 | 見出し |
+| `--line-height-base` | 1.5 | 本文 (デフォルト) |
+| `--line-height-relaxed` | 1.7 | 長文・説明文 |

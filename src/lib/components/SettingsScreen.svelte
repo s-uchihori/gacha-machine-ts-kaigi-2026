@@ -474,88 +474,110 @@ function getNextOrderValue() {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: var(--color-bg-contents-area);
+    background-color: var(--color-surface-base);
   }
 
+  /* ============ Header (sticky) ============ */
   .header {
-    padding: 1rem;
-    background-color: var(--color-bg-white);
-    border-bottom: 1px solid var(--color-border-low);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: var(--space-12) var(--space-16);
+    background-color: var(--color-surface-white);
+    border-bottom: 1px solid var(--color-border-base);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-12);
   }
 
   .back-button {
-    padding: 0.5rem 1rem;
-    background-color: var(--color-bg-white);
-    border: 1px solid var(--color-border-back-btn);
-    border-radius: 4px;
+    min-height: 44px;
+    padding: var(--space-8) var(--space-12);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-text-sub);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 1rem;
-    color: var(--color-text-high);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-main);
   }
 
   .back-button:hover {
-    background-color: var(--color-option-highlight);
+    background-color: var(--color-state-highlight);
+  }
+
+  h1 {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-main);
+    margin: 0;
+  }
+
+  /* ============ Main Content ============ */
+  .main-content {
+    flex: 1;
+    padding: var(--space-16);
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
   .stats-section {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-20);
   }
 
   .data-source-section {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-20);
   }
 
   .data-source-container {
-    background-color: var(--color-bg-white);
-    border: 1px solid var(--color-border-low);
-    border-radius: 8px;
-    padding: 1.5rem;
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-base);
+    border-radius: var(--radius-lg);
+    padding: var(--space-16);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-12);
   }
 
   .data-source-info h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1rem;
+    margin: 0 0 var(--space-4) 0;
+    font-size: var(--font-size-base);
     font-weight: bold;
-    color: var(--color-text-high);
+    color: var(--color-text-main);
   }
 
   .data-source-description {
     margin: 0;
-    font-size: 0.875rem;
-    color: var(--color-text-middle);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-sub);
   }
 
   .toggle-button {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
+    gap: var(--space-12);
+    min-height: 44px;
+    padding: var(--space-8) var(--space-12);
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     font-weight: 500;
-    color: var(--color-text-high);
+    color: var(--color-text-main);
   }
 
   .toggle-track {
     position: relative;
     width: 48px;
     height: 24px;
-    background-color: var(--color-bg-middle);
-    border-radius: 12px;
+    background-color: var(--color-surface-middle);
+    border-radius: var(--radius-full);
     transition: background-color 0.2s;
+    flex-shrink: 0;
   }
 
   .toggle-track.active {
-    background-color: var(--color-brand-assign-red);
+    background-color: var(--color-brand-red);
   }
 
   .toggle-thumb {
@@ -564,7 +586,7 @@ function getNextOrderValue() {
     left: 2px;
     width: 20px;
     height: 20px;
-    background-color: var(--color-bg-white);
+    background-color: var(--color-surface-white);
     border-radius: 50%;
     transition: transform 0.2s;
   }
@@ -574,32 +596,25 @@ function getNextOrderValue() {
   }
 
   .toggle-label {
-    min-width: 100px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-    color: var(--color-text-high);
-    margin: 0;
-  }
-
-  .main-content {
     flex: 1;
-    padding: 2rem;
+    text-align: left;
   }
 
+  /* ============ Add Button ============ */
   .add-button-container {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-20);
   }
 
   .add-prize-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-12) var(--space-24);
+    font-size: var(--font-size-base);
     font-weight: bold;
-    background-color: var(--color-brand-assign-red);
+    background-color: var(--color-brand-red);
     color: var(--color-text-white);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
     cursor: pointer;
   }
 
@@ -613,34 +628,36 @@ function getNextOrderValue() {
   }
 
   .add-button-helper {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--color-text-middle);
+    margin-top: var(--space-8);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-sub);
   }
 
   .empty-message {
     text-align: center;
-    padding: 3rem;
-    color: var(--color-text-middle);
+    padding: var(--space-48);
+    color: var(--color-text-sub);
   }
 
+  /* ============ Prize List (SP: stacked card) ============ */
   .prize-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-12);
   }
 
   .prize-item {
-    background-color: var(--color-bg-white);
-    border: 1px solid var(--color-border-low);
-    border-radius: 8px;
-    padding: 1rem;
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-base);
+    border-radius: var(--radius-lg);
+    padding: var(--space-16);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-12);
     transition: box-shadow 0.2s;
   }
 
@@ -651,53 +668,65 @@ function getNextOrderValue() {
   .prize-info {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-12);
   }
 
   .prize-image {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
+  .prize-details {
+    flex: 1;
+    min-width: 0;
   }
 
   .prize-details h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.125rem;
-    color: var(--color-text-high);
+    margin: 0 0 var(--space-4) 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text-main);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .prize-details p {
     margin: 0;
-    font-size: 0.875rem;
-    color: var(--color-text-middle);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-sub);
   }
 
   .prize-actions {
     display: flex;
-    gap: 0.5rem;
+    gap: var(--space-8);
+    width: 100%;
   }
 
   .edit-button,
   .delete-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    border-radius: 4px;
+    flex: 1;
+    min-height: 44px;
+    padding: var(--space-8) var(--space-12);
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius-md);
     cursor: pointer;
   }
 
   .edit-button {
-    background-color: var(--color-bg-white);
-    border: 1px solid var(--color-border-low);
-    color: var(--color-text-high);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-base);
+    color: var(--color-text-main);
   }
 
   .edit-button:hover {
-    background-color: var(--color-option-highlight);
+    background-color: var(--color-state-highlight);
   }
 
   .delete-button {
-    background-color: var(--color-accent-red);
+    background-color: var(--color-state-error);
     border: none;
     color: var(--color-text-white);
   }
@@ -706,54 +735,55 @@ function getNextOrderValue() {
     opacity: 0.9;
   }
 
+  /* ============ Modal (SP: bottom-sheet) ============ */
   .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-color: var(--color-overlay);
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     z-index: 1000;
   }
 
   .modal-content {
-    background-color: var(--color-bg-white);
-    border-radius: 8px;
-    padding: 2rem;
-    max-width: 500px;
-    width: 90%;
+    background-color: var(--color-surface-white);
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    padding: var(--space-20);
+    width: 100%;
+    max-width: 100%;
+    max-height: 100vh;
+    overflow-y: auto;
   }
 
   .prize-form h2,
   .confirm-dialog h2 {
-    margin: 0 0 1.5rem 0;
-    font-size: 1.5rem;
-    color: var(--color-text-high);
+    margin: 0 0 var(--space-20) 0;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-main);
   }
 
   .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-20);
   }
 
   .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
+    margin-bottom: var(--space-8);
+    font-size: var(--font-size-sm);
     font-weight: bold;
-    color: var(--color-text-high);
+    color: var(--color-text-main);
   }
 
   .form-group input,
   .form-group textarea {
     width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid var(--color-border-low);
-    border-radius: 4px;
-    background-color: var(--color-bg-low);
+    min-height: 44px;
+    padding: var(--space-12);
+    font-size: var(--font-size-base);
+    border: 1px solid var(--color-border-base);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-base);
     font-family: inherit;
   }
 
@@ -763,55 +793,58 @@ function getNextOrderValue() {
   }
 
   .character-count {
-    margin-top: 0.25rem;
-    font-size: 0.75rem;
-    color: var(--color-text-middle);
+    margin-top: var(--space-4);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-sub);
     text-align: right;
   }
 
   .helper-text {
-    margin: 0;
-    font-size: 0.75rem;
-    color: var(--color-text-middle);
+    margin: var(--space-4) 0 0 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-sub);
   }
 
   .error-message {
-    margin: 0.5rem 0 0 0;
-    font-size: 0.75rem;
-    color: var(--color-accent-red);
+    margin: var(--space-8) 0 0 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-state-error);
   }
 
+  /* SP: ボタンは縦並び、Tablet+ で横並びに */
   .form-actions,
   .dialog-actions {
     display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
+    flex-direction: column-reverse;
+    gap: var(--space-8);
+    margin-top: var(--space-20);
+  }
+
+  .cancel-button,
+  .save-button {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-12) var(--space-24);
+    font-size: var(--font-size-base);
+    border-radius: var(--radius-md);
+    cursor: pointer;
   }
 
   .cancel-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    background-color: var(--color-bg-white);
-    border: 1px solid var(--color-border-low);
-    border-radius: 4px;
-    cursor: pointer;
-    color: var(--color-text-high);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-base);
+    color: var(--color-text-main);
   }
 
   .cancel-button:hover {
-    background-color: var(--color-option-highlight);
+    background-color: var(--color-state-highlight);
   }
 
   .save-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
     font-weight: bold;
-    background-color: var(--color-brand-assign-red);
+    background-color: var(--color-brand-red);
     color: var(--color-text-white);
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
   }
 
   .save-button:hover {
@@ -819,54 +852,94 @@ function getNextOrderValue() {
   }
 
   .confirm-dialog p {
-    margin: 0 0 1.5rem 0;
-    color: var(--color-text-high);
+    margin: 0 0 var(--space-20) 0;
+    color: var(--color-text-main);
   }
 
-  /* レスポンシブデザイン */
-  @media (max-width: 768px) {
-    .main-content {
-      padding: 1.5rem;
-    }
-
-    .modal-content {
-      max-width: 95%;
-      padding: 1.5rem;
-    }
-
-    .prize-item {
-      flex-direction: column;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-
-    .prize-actions {
-      width: 100%;
-      justify-content: flex-end;
-    }
-  }
-
-  @media (max-width: 480px) {
+  /* ============ Tablet (600px+): 横並びレイアウト ============ */
+  @media (min-width: 600px) {
     .header {
-      padding: 0.75rem;
+      padding: var(--space-16) var(--space-24);
     }
 
     h1 {
-      font-size: 1.25rem;
+      font-size: var(--font-size-xl);
     }
 
     .main-content {
-      padding: 1rem;
+      padding: var(--space-24);
+      max-width: 720px;
+    }
+
+    .data-source-container {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-20);
+    }
+
+    .toggle-label {
+      min-width: 140px;
+    }
+
+    .add-prize-button {
+      width: auto;
+    }
+
+    .prize-item {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .prize-info {
+      flex: 1;
     }
 
     .prize-image {
-      width: 48px;
-      height: 48px;
+      width: 64px;
+      height: 64px;
     }
 
-    .form-group input {
-      padding: 0.5rem;
-      font-size: 0.875rem;
+    .prize-actions {
+      width: auto;
+    }
+
+    .edit-button,
+    .delete-button {
+      flex: 0 0 auto;
+      min-width: 80px;
+    }
+
+    .modal-overlay {
+      align-items: center;
+      padding: var(--space-16);
+    }
+
+    .modal-content {
+      max-width: 560px;
+      max-height: 90vh;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-24);
+    }
+
+    .form-actions,
+    .dialog-actions {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    .cancel-button,
+    .save-button {
+      width: auto;
+      min-width: 120px;
+    }
+  }
+
+  /* ============ Desktop (1024px+) ============ */
+  @media (min-width: 1024px) {
+    .main-content {
+      max-width: 960px;
     }
   }
 </style>

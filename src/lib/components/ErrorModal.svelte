@@ -50,110 +50,141 @@
 {/if}
 
 <style>
+  /* SP: bottom-sheet 化 */
   .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-color: var(--color-overlay);
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     z-index: 2000;
   }
 
   .modal-content {
-    background-color: var(--color-bg-white);
-    border-radius: 8px;
-    padding: 2rem;
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;
+    background-color: var(--color-surface-white);
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    padding: var(--space-20);
+    max-width: 100%;
+    width: 100%;
+    max-height: 100vh;
     overflow-y: auto;
   }
 
   .error-modal {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: var(--space-20);
   }
 
   .error-header h2 {
     margin: 0;
-    font-size: 1.5rem;
-    color: var(--color-accent-red);
+    font-size: var(--font-size-xl);
+    color: var(--color-state-error);
   }
 
   .error-body {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-12);
   }
 
   .error-message {
     margin: 0;
-    font-size: 1rem;
-    color: var(--color-text-high);
-    line-height: 1.6;
+    font-size: var(--font-size-base);
+    color: var(--color-text-main);
+    line-height: var(--line-height-relaxed);
   }
 
   .error-details-section {
-    margin-top: 1rem;
+    margin-top: var(--space-12);
   }
 
   .details-toggle {
-    padding: 0.5rem 1rem;
-    background-color: var(--color-bg-low);
-    border: 1px solid var(--color-border-low);
-    border-radius: 4px;
+    min-height: 44px;
+    padding: var(--space-8) var(--space-12);
+    background-color: var(--color-surface-base);
+    border: 1px solid var(--color-border-base);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 0.875rem;
-    color: var(--color-text-high);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-main);
     width: 100%;
     text-align: left;
   }
 
   .details-toggle:hover {
-    background-color: var(--color-option-highlight);
+    background-color: var(--color-state-highlight);
   }
 
   .error-details {
-    margin-top: 0.5rem;
-    padding: 1rem;
-    background-color: var(--color-bg-low);
-    border: 1px solid var(--color-border-low);
-    border-radius: 4px;
+    margin-top: var(--space-8);
+    padding: var(--space-12);
+    background-color: var(--color-surface-base);
+    border: 1px solid var(--color-border-base);
+    border-radius: var(--radius-md);
     max-height: 200px;
     overflow-y: auto;
   }
 
   .error-details pre {
     margin: 0;
-    font-size: 0.75rem;
-    color: var(--color-text-middle);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-sub);
     white-space: pre-wrap;
     word-wrap: break-word;
     font-family: 'Courier New', monospace;
   }
 
+  /* SP: ボタンは縦並び・全幅 */
   .error-footer {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
   }
 
   .close-button {
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-12) var(--space-32);
+    font-size: var(--font-size-base);
     font-weight: bold;
-    background-color: var(--color-brand-assign-red);
+    background-color: var(--color-brand-red);
     color: var(--color-text-white);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
     cursor: pointer;
   }
 
   .close-button:hover {
     opacity: 0.9;
+  }
+
+  /* ============ Tablet (600px+): centered modal + 横並びボタン ============ */
+  @media (min-width: 600px) {
+    .modal-overlay {
+      align-items: center;
+      padding: var(--space-16);
+    }
+
+    .modal-content {
+      max-width: 560px;
+      max-height: 90vh;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-24);
+    }
+
+    .error-header h2 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .error-footer {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    .close-button {
+      width: auto;
+      min-width: 140px;
+    }
   }
 </style>
