@@ -494,7 +494,7 @@ function getNextOrderValue() {
     min-height: 44px;
     padding: var(--space-8) var(--space-12);
     background-color: var(--color-surface-white);
-    border: 1px solid var(--color-text-sub);
+    border: 1px solid var(--color-border-base);
     border-radius: var(--radius-md);
     cursor: pointer;
     font-size: var(--font-size-sm);

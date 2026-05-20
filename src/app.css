@@ -71,6 +71,16 @@
   --color-overlay: color-mix(in srgb, #000000 50%, transparent);
 
   /* =========================
+      Primitive / Gradient
+   ========================== */
+  --gradient-red-orange: linear-gradient(90deg, var(--color-red), var(--color-orange));
+
+  /* =========================
+      Semantic / Gradient
+   ========================== */
+  --gradient-brand-cta: var(--gradient-red-orange);
+
+  /* =========================
       Spacing (14段階)
    ========================== */
   --space-0: 0;

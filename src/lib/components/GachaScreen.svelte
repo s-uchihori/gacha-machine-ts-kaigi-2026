@@ -314,18 +314,18 @@
     padding: var(--space-16) var(--space-24);
     font-size: var(--font-size-lg);
     font-weight: bold;
-    background-color: var(--color-brand-red);
+    background: var(--gradient-brand-cta);
     color: var(--color-text-white);
     border: none;
     border-radius: var(--radius-xl);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 12px rgba(215, 12, 24, 0.3);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-brand-red) 30%, transparent);
   }
 
   .gacha-button:hover:not(:disabled) {
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(215, 12, 24, 0.4);
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--color-brand-red) 40%, transparent);
   }
 
   .gacha-button:active:not(:disabled) {
@@ -333,8 +333,8 @@
   }
 
   .gacha-button:disabled {
-    background-color: var(--color-state-disabled);
-    color: var(--color-text-white);
+    background: var(--color-state-disabled);
+    color: var(--color-text-sub);
     cursor: not-allowed;
     box-shadow: none;
   }
@@ -364,10 +364,10 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ff5a65, #f03444, #d70c18, #a0090f);
+    background: radial-gradient(circle at 30% 30%, #ff5a65, #f03444, var(--color-brand-red), #a0090f);
     animation: orbSpin 2s linear infinite, orbPulse 1s ease-in-out infinite;
     box-shadow:
-      0 0 40px rgba(215, 12, 24, 0.8),
+      0 0 40px color-mix(in srgb, var(--color-brand-red) 80%, transparent),
       0 0 80px rgba(240, 52, 68, 0.6),
       inset 0 0 30px rgba(255, 255, 255, 0.4);
   }
@@ -405,7 +405,7 @@
     height: 8px;
     background: #ff5a65;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 90, 101, 0.9), 0 0 20px rgba(215, 12, 24, 0.6);
+    box-shadow: 0 0 10px rgba(255, 90, 101, 0.9), 0 0 20px color-mix(in srgb, var(--color-brand-red) 60%, transparent);
   }
 
   .particle-1 { top: 0%; left: 50%; animation: particleFloat1 2s ease-in-out infinite; }
@@ -481,7 +481,7 @@
     left: 50%;
     width: 4px;
     height: 120px;
-    background: linear-gradient(to bottom, transparent, rgba(215, 12, 24, 0.7), rgba(255, 90, 101, 0.5), transparent);
+    background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-brand-red) 70%, transparent), rgba(255, 90, 101, 0.5), transparent);
     transform-origin: center 0;
     opacity: 0.8;
   }
@@ -498,7 +498,7 @@
 
   /* リビール時のフラッシュ */
   .revealing-container {
-    background: radial-gradient(circle, rgba(215, 12, 24, 0.2), transparent);
+    background: radial-gradient(circle, color-mix(in srgb, var(--color-brand-red) 20%, transparent), transparent);
   }
 
   .reveal-flash {
@@ -509,7 +509,7 @@
     width: 240px;
     height: 240px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(255, 90, 101, 0.6), rgba(215, 12, 24, 0.4), transparent);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(255, 90, 101, 0.6), color-mix(in srgb, var(--color-brand-red) 40%, transparent), transparent);
     animation: flashExpand 0.8s ease-out forwards;
   }
 
@@ -540,12 +540,12 @@
     0% {
       opacity: 0;
       transform: scale(0.5);
-      text-shadow: 0 0 30px rgba(215, 12, 24, 1), 0 0 50px rgba(255, 90, 101, 0.8);
+      text-shadow: 0 0 30px var(--color-brand-red), 0 0 50px rgba(255, 90, 101, 0.8);
     }
     100% {
       opacity: 1;
       transform: scale(1);
-      text-shadow: 0 0 10px rgba(215, 12, 24, 0.6);
+      text-shadow: 0 0 10px color-mix(in srgb, var(--color-brand-red) 60%, transparent);
     }
   }
 
@@ -590,8 +590,8 @@
     color: #ff5a65;
     text-shadow:
       0 0 10px rgba(255, 90, 101, 0.9),
-      0 0 20px rgba(215, 12, 24, 0.7),
-      0 0 30px rgba(215, 12, 24, 0.5);
+      0 0 20px color-mix(in srgb, var(--color-brand-red) 70%, transparent),
+      0 0 30px color-mix(in srgb, var(--color-brand-red) 50%, transparent);
     animation: starBurst 1s ease-out forwards;
     opacity: 0;
   }
@@ -646,19 +646,19 @@
       opacity: 0;
       transform: scale(0.8);
       text-shadow:
-        0 0 20px rgba(215, 12, 24, 1),
+        0 0 20px var(--color-brand-red),
         0 0 40px rgba(255, 90, 101, 0.8);
     }
     50% {
       text-shadow:
-        0 0 15px rgba(215, 12, 24, 0.7),
+        0 0 15px color-mix(in srgb, var(--color-brand-red) 70%, transparent),
         0 0 30px rgba(255, 90, 101, 0.5);
     }
     100% {
       opacity: 1;
       transform: scale(1);
       text-shadow:
-        0 0 5px rgba(215, 12, 24, 0.5),
+        0 0 5px color-mix(in srgb, var(--color-brand-red) 50%, transparent),
         0 0 10px rgba(255, 90, 101, 0.3);
     }
   }
@@ -701,7 +701,7 @@
     background: radial-gradient(
       circle,
       rgba(255, 90, 101, 0.4) 0%,
-      rgba(215, 12, 24, 0.3) 40%,
+      color-mix(in srgb, var(--color-brand-red) 30%, transparent) 40%,
       transparent 70%
     );
     border-radius: 50%;
@@ -729,7 +729,7 @@
     background-color: var(--color-brand-red);
     color: var(--color-text-white);
     border: none;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     cursor: pointer;
     transition: opacity 0.2s;
   }
