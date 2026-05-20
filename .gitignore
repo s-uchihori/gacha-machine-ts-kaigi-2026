@@ -15,6 +15,10 @@ dist-ssr
 # Environment variables
 .env
 
+# Cloudflare Workers
+.wrangler/
+.dev.vars
+
 # Test screenshots (generated on test failures)
 **/__screenshots__/
 

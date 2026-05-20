@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "gacha-machine-ts-kaigi-2026",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-05-20",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/*", "!/assets/*"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}
